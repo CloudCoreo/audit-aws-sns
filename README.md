@@ -72,5 +72,5 @@ This repo is designed to work with CloudCoreo. It will monitor SNS against best 
 
 
 ## Icon
-
+![icon](https://raw.githubusercontent.com/CloudCoreo/audit-aws-sns/master/images/icon.png "icon")
 

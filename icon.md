@@ -1,0 +1,1 @@
+![icon](https://raw.githubusercontent.com/CloudCoreo/audit-aws-sns/master/images/icon.png "icon")
