@@ -4,7 +4,7 @@ coreo_aws_rule "sns-inventory" do
   service :sns
   link "http://kb.cloudcoreo.com/mydoc-inventory.html"
   include_violations_in_count false
-  display_name "KMS Inventory"
+  display_name "SNS Inventory"
   description "This rule performs an inventory on all sns objects in the target AWS account."
   category "Inventory"
   suggested_action "None."
