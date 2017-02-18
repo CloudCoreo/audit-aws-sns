@@ -11,10 +11,10 @@ coreo_aws_rule "sns-inventory" do
   level "Informational"
   meta_cis_id "99.999"
   objectives ["topics"]
-  audit_objects ["object.topics"]
+  audit_objects ["object.topics.topic_arn"]
   operators ["=~"]
   raise_when [//]
-  id_map "object.topics"
+  id_map "object.topics.topic_arn"
 end
 
 coreo_aws_rule_runner "advise-sns" do
