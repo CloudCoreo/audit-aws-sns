@@ -17,13 +17,6 @@ coreo_aws_rule "sns-inventory" do
   id_map "object.topics.topic_arn"
 end
 
-coreo_aws_rule_runner "advise-sns" do
-  rules ${AUDIT_AWS_SNS_ALERT_LIST}
-  action :run
-  service :sns
-  regions ${AUDIT_AWS_SNS_REGIONS}
-end
-
 coreo_uni_util_variables "sns-planwide" do
   action :set
   variables([
