@@ -43,6 +43,13 @@ coreo_uni_util_variables "sns-planwide" do
 end
 
 
+coreo_aws_rule_runner "advise-sns-subscriptions" do
+  action :run
+  rules ["sns-subscriptions-inventory"]
+  service :sns
+  regions ${AUDIT_AWS_SNS_REGIONS}
+end
+
 coreo_aws_rule_runner "advise-sns" do
   action :run
   rules ${AUDIT_AWS_SNS_ALERT_LIST}
