@@ -120,7 +120,7 @@ const letters = AuditSNS.getLetters();
 
 const newJSONInput = AuditSNS.getSortedJSONForAuditPanel();
 coreoExport('JSONReport', JSON.stringify(newJSONInput));
-coreoExport('report', JSON.stringify(newJSONInput));
+coreoExport('report', JSON.stringify(newJSONInput['violations']));
 
 callback(letters);
   EOH
