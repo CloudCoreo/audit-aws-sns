@@ -1,6 +1,6 @@
 variables:
     AUDIT_AWS_SNS_ALERT_LIST:
-        description: "Which alerts would you like to check for? Default is all SNS alerts. Choices are sns-inventory"
+        description: "Which alerts would you like to check for? Default is all SNS alerts. Choices are sns-subscriptions-inventory,sns-topics-inventory"
         required: false
         type: array
         default:
