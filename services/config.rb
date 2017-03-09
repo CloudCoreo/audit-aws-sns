@@ -1,4 +1,4 @@
-coreo_aws_rule "sns-topics-inventory" do
+\coreo_aws_rule "sns-topics-inventory" do
   action :define
   service :sns
   link "http://kb.cloudcoreo.com/mydoc-inventory.html"
@@ -66,7 +66,7 @@ coreo_uni_util_jsrunner "tags-to-notifiers-array-sns" do
   packages([
                {
                    :name => "cloudcoreo-jsrunner-commons",
-                   :version => "*"
+                   :version => "latest"
                },
                {
                    :name => "js-yaml",
