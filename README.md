@@ -35,8 +35,8 @@ This repo is designed to work with CloudCoreo. It will monitor SNS against best 
 ## Optional variables with default
 
 ### `AUDIT_AWS_SNS_ALERT_LIST`:
-  * description: Which alerts would you like to check for? Default is all SNS alerts. Choices are sns-inventory
-  * default: sns-inventory
+  * description: Which alerts would you like to check for? Default is all SNS alerts. Choices are sns-subscriptions-inventory,sns-topics-inventory
+  * default: sns-subscriptions-inventory, sns-topics-inventory
 
 ### `AUDIT_AWS_SNS_OWNER_TAG`:
   * description: Enter an AWS tag whose value is an email address of the owner of the SNS object. (Optional)
