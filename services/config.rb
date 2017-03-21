@@ -1,4 +1,4 @@
-\coreo_aws_rule "sns-topics-inventory" do
+coreo_aws_rule "sns-topics-inventory" do
   action :define
   service :sns
   link "http://kb.cloudcoreo.com/mydoc-inventory.html"
