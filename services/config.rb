@@ -139,7 +139,7 @@ coreo_uni_util_variables "sns-update-planwide-3" do
   variables([
                 {'COMPOSITE::coreo_uni_util_variables.sns-planwide.results' => 'COMPOSITE::coreo_uni_util_jsrunner.tags-to-notifiers-array-sns.JSONReport'},
                 {'COMPOSITE::coreo_aws_rule_runner.advise-sns.report' => 'COMPOSITE::coreo_uni_util_jsrunner.tags-to-notifiers-array-sns.report'},
-                {'COMPOSITE::coreo_uni_util_variables.sns-planwide.table' => 'COMPOSITE::coreo_uni_util_jsrunner.tags-to-notifiers-array-sns.table'}
+                {'GLOBAL::table' => 'COMPOSITE::coreo_uni_util_jsrunner.tags-to-notifiers-array-sns.table'}
             ])
 end
 
