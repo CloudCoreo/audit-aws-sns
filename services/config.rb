@@ -38,7 +38,7 @@ coreo_uni_util_variables "sns-planwide" do
                 {'COMPOSITE::coreo_uni_util_variables.sns-planwide.composite_name' => 'PLAN::stack_name'},
                 {'COMPOSITE::coreo_uni_util_variables.sns-planwide.plan_name' => 'PLAN::name'},
                 {'COMPOSITE::coreo_uni_util_variables.sns-planwide.results' => 'unset'},
-                {'COMPOSITE::coreo_uni_util_variables.sns-planwide.number_violations' => '0'}
+                {'GLOBAL::number_violations' => '0'}
             ])
 end
 
@@ -54,7 +54,7 @@ coreo_uni_util_variables "sns-update-planwide-1" do
   action :set
   variables([
                 {'COMPOSITE::coreo_uni_util_variables.sns-planwide.results' => 'COMPOSITE::coreo_aws_rule_runner.advise-sns.report'},
-                {'COMPOSITE::coreo_uni_util_variables.sns-planwide.number_violations' => 'COMPOSITE::coreo_aws_rule_runner.advise-sns.number_violations'},
+                {'GLOBAL::number_violations' => 'COMPOSITE::coreo_aws_rule_runner.advise-sns.number_violations'},
 
             ])
 end
@@ -139,7 +139,7 @@ coreo_uni_util_variables "sns-update-planwide-3" do
   variables([
                 {'COMPOSITE::coreo_uni_util_variables.sns-planwide.results' => 'COMPOSITE::coreo_uni_util_jsrunner.tags-to-notifiers-array-sns.JSONReport'},
                 {'COMPOSITE::coreo_aws_rule_runner.advise-sns.report' => 'COMPOSITE::coreo_uni_util_jsrunner.tags-to-notifiers-array-sns.report'},
-                {'COMPOSITE::coreo_uni_util_variables.sns-planwide.table' => 'COMPOSITE::coreo_uni_util_jsrunner.tags-to-notifiers-array-sns.table'}
+                {'GLOBAL::table' => 'COMPOSITE::coreo_uni_util_jsrunner.tags-to-notifiers-array-sns.table'}
             ])
 end
 
