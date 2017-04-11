@@ -1,7 +1,7 @@
 coreo_aws_rule "sns-topics-inventory" do
   action :define
   service :sns
-  link "http://kb.cloudcoreo.com/mydoc-inventory.html"
+  link "http://kb.cloudcoreo.com/mydoc_all-inventory.html"
   include_violations_in_count false
   display_name "SNS Topics Inventory"
   description "This rule performs an inventory on all sns topics in the target AWS account."
@@ -18,7 +18,7 @@ end
 coreo_aws_rule "sns-subscriptions-inventory" do
   action :define
   service :sns
-  link "http://kb.cloudcoreo.com/mydoc-inventory.html"
+  link "http://kb.cloudcoreo.com/mydoc_all-inventory.html"
   include_violations_in_count false
   display_name "SNS Subscriptions Inventory"
   description "This rule performs an inventory on all sns subscriptions in the target AWS account."
