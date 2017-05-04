@@ -55,7 +55,7 @@ This repo is designed to work with CloudCoreo. It will monitor SNS against best 
 1. SNS
 
 ## Categories
-1. AWS Services Audi
+1. AWS Services Audit
 
 
 
