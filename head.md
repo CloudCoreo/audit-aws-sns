@@ -1,3 +1,3 @@
-audit SNS
+sns audit
 ============================
-This stack will monitor SNS and alert on things CloudCoreo developers think are violations of best practices
+This composite monitors sns and reports best practice violations, standards body policy violations, and inventory
