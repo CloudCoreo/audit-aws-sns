@@ -66,19 +66,32 @@ coreo_uni_util_jsrunner "tags-to-notifiers-array-sns" do
   packages([
                {
                    :name => "cloudcoreo-jsrunner-commons",
-                   :version => "1.10.7-9"
+                   :version => "1.9.7-beta18"
                },
                {
                    :name => "js-yaml",
                    :version => "3.7.0"
                }
            ])
-  json_input '{ "composite name":"PLAN::stack_name",
-                "plan name":"PLAN::name",
-                "cloud account name": "PLAN::cloud_account_name",
+  json_input '{ "compositeName":"PLAN::stack_name",
+                "planName":"PLAN::name",
+                "cloudAccountName": "PLAN::cloud_account_name",
                 "violations": COMPOSITE::coreo_aws_rule_runner.advise-sns.report}'
   function <<-EOH
 
+const compositeName = json_input.compositeName;
+const planName = json_input.planName;
+const cloudAccount = json_input.cloudAccountName;
+const cloudObjects = json_input.violations;
+
+const NO_OWNER_EMAIL = "${AUDIT_AWS_SNS_ALERT_RECIPIENT}";
+const OWNER_TAG = "${AUDIT_AWS_SNS_OWNER_TAG}";
+const ALLOW_EMPTY = "${AUDIT_AWS_SNS_ALLOW_EMPTY}";
+const SEND_ON = "${AUDIT_AWS_SNS_SEND_ON}";
+
+const alertListJSON = "[${AUDIT_AWS_SNS_ALERT_LIST}]";
+const alertListArray = alertListJSON.replace(/'/g, '"');
+const ruleInputs = {};
 
 
 function setTableAndSuppression() {
