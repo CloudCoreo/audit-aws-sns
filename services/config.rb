@@ -66,7 +66,7 @@ coreo_uni_util_jsrunner "tags-to-notifiers-array-sns" do
   packages([
                {
                    :name => "cloudcoreo-jsrunner-commons",
-                   :version => "1.9.7-beta18"
+                   :version => "1.9.7-beta19"
                },
                {
                    :name => "js-yaml",
@@ -89,8 +89,7 @@ const OWNER_TAG = "${AUDIT_AWS_SNS_OWNER_TAG}";
 const ALLOW_EMPTY = "${AUDIT_AWS_SNS_ALLOW_EMPTY}";
 const SEND_ON = "${AUDIT_AWS_SNS_SEND_ON}";
 
-const alertListJSON = [${AUDIT_AWS_SNS_ALERT_LIST}];
-const alertListArray = alertListJSON.replace(/'/g, '"');
+const alertListArray = ${AUDIT_AWS_SNS_ALERT_LIST};
 const ruleInputs = {};
 
 
