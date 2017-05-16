@@ -92,57 +92,71 @@ const SEND_ON = "${AUDIT_AWS_SNS_SEND_ON}";
 const alertListArray = ${AUDIT_AWS_SNS_ALERT_LIST};
 const ruleInputs = {};
 
+let userSuppression;
+let userSchemes;
 
-function setTableAndSuppression() {
-  let table;
-  let suppression;
+const fs = require('fs');
+const yaml = require('js-yaml');
 
-  const fs = require('fs');
-  const yaml = require('js-yaml');
+function setSuppression() {
   try {
-      suppression = yaml.safeLoad(fs.readFileSync('./suppression.yaml', 'utf8'));
+    userSuppression = yaml.safeLoad(fs.readFileSync('./suppression.yaml', 'utf8'));
   } catch (e) {
-      console.log("Error reading suppression.yaml file: " , e);
-      suppression = {};
+    console.log(`Error reading suppression.yaml file`);
+    userSuppression = [];
   }
+  coreoExport('suppression', JSON.stringify(userSuppression));
+}
+
+function setTable() {
   try {
-      table = yaml.safeLoad(fs.readFileSync('./table.yaml', 'utf8'));
+    userSchemes = yaml.safeLoad(fs.readFileSync('./table.yaml', 'utf8'));
   } catch (e) {
-      console.log("Error reading table.yaml file: ", e);
-      table = {};
+    console.log(`Error reading table.yaml file`);
+    userSchemes = {};
   }
-  coreoExport('table', JSON.stringify(table));
-  coreoExport('suppression', JSON.stringify(suppression));
-  
-  let alertListToJSON = "${AUDIT_AWS_SNS_ALERT_LIST}";
-  let alertListArray = alertListToJSON.replace(/'/g, '"');
-  json_input['alert list'] = alertListArray || [];
-  json_input['suppression'] = suppression || [];
-  json_input['table'] = table || {};
+  coreoExport('table', JSON.stringify(userSchemes));
+}
+setSuppression();
+setTable();
+
+const argForConfig = {
+    NO_OWNER_EMAIL, cloudObjects, userSuppression, OWNER_TAG,
+    userSchemes, alertListArray, ruleInputs, ALLOW_EMPTY,
+    SEND_ON, cloudAccount, compositeName, planName
 }
 
 
-setTableAndSuppression();
+function createConfig(argForConfig) {
+    let JSON_INPUT = {
+        compositeName: argForConfig.compositeName,
+        planName: argForConfig.planName,
+        violations: argForConfig.cloudObjects,
+        userSchemes: argForConfig.userSchemes,
+        userSuppression: argForConfig.userSuppression,
+        alertList: argForConfig.alertListArray,
+        disabled: argForConfig.ruleInputs,
+        cloudAccount: argForConfig.cloudAccount
+    };
+    let SETTINGS = {
+        NO_OWNER_EMAIL: argForConfig.NO_OWNER_EMAIL,
+        OWNER_TAG: argForConfig.OWNER_TAG,
+        ALLOW_EMPTY: argForConfig.ALLOW_EMPTY, SEND_ON: argForConfig.SEND_ON,
+        SHOWN_NOT_SORTED_VIOLATIONS_COUNTER: false
+    };
+    return {JSON_INPUT, SETTINGS};
+}
 
-const JSON_INPUT = json_input;
-const NO_OWNER_EMAIL = "${AUDIT_AWS_SNS_ALERT_RECIPIENT}";
-const OWNER_TAG = "${AUDIT_AWS_SNS_OWNER_TAG}";
-const ALLOW_EMPTY = "${AUDIT_AWS_SNS_ALLOW_EMPTY}";
-const SEND_ON = "${AUDIT_AWS_SNS_SEND_ON}";
-const SHOWN_NOT_SORTED_VIOLATIONS_COUNTER = false;
-
-const SETTINGS = { NO_OWNER_EMAIL, OWNER_TAG, 
-    ALLOW_EMPTY, SEND_ON, SHOWN_NOT_SORTED_VIOLATIONS_COUNTER};
-
+const {JSON_INPUT, SETTINGS} = createConfig(argForConfig);
 const CloudCoreoJSRunner = require('cloudcoreo-jsrunner-commons');
-const AuditSNS = new CloudCoreoJSRunner(JSON_INPUT, SETTINGS);
-const letters = AuditSNS.getLetters();
 
-const newJSONInput = AuditSNS.getSortedJSONForAuditPanel();
-coreoExport('JSONReport', JSON.stringify(newJSONInput));
-coreoExport('report', JSON.stringify(newJSONInput['violations']));
+const emails = CloudCoreoJSRunner.createEmails(JSON_INPUT, SETTINGS);
+const suppressionJSON = CloudCoreoJSRunner.createJSONWithSuppress(JSON_INPUT, SETTINGS);
 
-callback(letters);
+coreoExport('JSONReport', JSON.stringify(suppressionJSON));
+coreoExport('report', JSON.stringify(suppressionJSON['violations']));
+
+callback(emails);
   EOH
 end
 
