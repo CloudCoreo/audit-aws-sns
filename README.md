@@ -34,16 +34,15 @@ This composite monitors sns against best practices and reports violations and in
 
 ## Optional variables with default
 
-### `AUDIT_AWS_SNS_ALERT_LIST`:
-  * description: Which alerts would you like to check for? Default is all SNS alerts. Choices are sns-subscriptions-inventory,sns-topics-inventory
-  * default: sns-subscriptions-inventory
-
 ### `AUDIT_AWS_SNS_OWNER_TAG`:
   * description: Enter an AWS tag whose value is an email address of the owner of the SNS object. (Optional)
   * default: NOT_A_TAG
 
 
 ## Optional variables with no default
+
+### `AUDIT_AWS_SNS_ALERT_LIST`:
+  * description: Which alerts would you like to check for? Default is all SNS alerts. Choices are sns-subscriptions-inventory,sns-topics-inventory
 
 ### `AUDIT_AWS_SNS_ALERT_RECIPIENT`:
   * description: Enter the email address(es) that will receive notifications. If more than one, separate each with a comma.
