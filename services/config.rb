@@ -48,6 +48,7 @@ coreo_aws_rule_runner "advise-sns" do
   rules ${AUDIT_AWS_SNS_ALERT_LIST}
   service :sns
   regions ${AUDIT_AWS_SNS_REGIONS}
+  filter(${FILTERED_OBJECTS}) if ${FILTERED_OBJECTS}
 end
 
 coreo_uni_util_variables "sns-update-planwide-1" do
