@@ -49,6 +49,23 @@ coreo_aws_rule "sns-subscriptions-inventory" do
   id_map "object.subscriptions.subscription_arn"
 end
 
+coreo_aws_rule "sns-subscriptions-inventory-internal" do
+  action :define
+  service :sns
+  include_violations_in_count false
+  link "http://kb.cloudcoreo.com/mydoc_unused-alert-definition.html"
+  display_name "CloudCoreo Use Only"
+  description "This is an internally defined alert."
+  category "Internal"
+  suggested_action "Ignore"
+  level "Internal"
+  objectives ["subscriptions"]
+  audit_objects ["object.subscriptions.subscription_arn"]
+  operators ["=~"]
+  raise_when [//]
+  id_map "object.subscriptions.subscription_arn"
+end
+
 coreo_uni_util_variables "sns-planwide" do
   action :set
   variables([
