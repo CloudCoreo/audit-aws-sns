@@ -4,5 +4,7 @@ variables:
         type: array
         default:
             - sns-topics-inventory # not_violation 
-            - sns-subscriptions-inventory # not_violation 
-        description: "Which rules would you like to run? Possible values are sns-topics-inventory sns-subscriptions-inventory"
+#             - sns-topics-inventory-internal # not_violation 
+#             - sns-subscriptions-inventory # not_violation 
+#             - sns-subscriptions-inventory-internal # not_violation 
+        description: "Which rules would you like to run? Possible values are sns-topics-inventory"
