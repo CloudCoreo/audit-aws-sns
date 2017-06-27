@@ -15,6 +15,23 @@ coreo_aws_rule "sns-topics-inventory" do
   id_map "object.topics.topic_arn"
 end
 
+coreo_aws_rule "sns-topics-inventory-internal" do
+  action :define
+  service :sns
+  include_violations_in_count false
+  link "http://kb.cloudcoreo.com/mydoc_unused-alert-definition.html"
+  display_name "CloudCoreo Use Only"
+  description "This is an internally defined alert."
+  category "Internal"
+  suggested_action "Ignore"
+  level "Internal"
+  objectives ["topics"]
+  audit_objects ["object.topics.topic_arn"]
+  operators ["=~"]
+  raise_when [//]
+  id_map "object.topics.topic_arn"
+end
+
 coreo_aws_rule "sns-subscriptions-inventory" do
   action :define
   service :sns
