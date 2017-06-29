@@ -101,7 +101,7 @@ coreo_uni_util_jsrunner "tags-to-notifiers-array-sns" do
   packages([
                {
                    :name => "cloudcoreo-jsrunner-commons",
-                   :version => "1.9.7-beta31"
+                   :version => "1.9.7-beta30"
                },
                {
                    :name => "js-yaml",
