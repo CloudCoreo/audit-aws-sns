@@ -41,6 +41,9 @@ This composite monitors sns against best practices and reports violations and in
 
 ## Optional variables with no default
 
+### `HTML_REPORT_SUBJECT`:
+  * description: Enter a custom report subject name.
+
 ### `AUDIT_AWS_SNS_ALERT_LIST`:
   * description: Which alerts would you like to check for? Default is all SNS alerts. Choices are sns-subscriptions-inventory,sns-topics-inventory
 
