@@ -101,7 +101,7 @@ coreo_uni_util_jsrunner "tags-to-notifiers-array-sns" do
   packages([
                {
                    :name => "cloudcoreo-jsrunner-commons",
-                   :version => "1.10.7-beta51"
+                   :version => "1.10.7-beta53"
                },
                {
                    :name => "js-yaml",
@@ -247,4 +247,3 @@ COMPOSITE::coreo_uni_util_jsrunner.tags-rollup-sns.return
       :to => '${AUDIT_AWS_SNS_ALERT_RECIPIENT}', :subject => 'CloudCoreo sns rule results on PLAN::stack_name :: PLAN::name'
   })
 end
-
