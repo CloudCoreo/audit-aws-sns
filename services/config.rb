@@ -101,7 +101,7 @@ coreo_uni_util_jsrunner "tags-to-notifiers-array-sns" do
   packages([
                {
                    :name => "cloudcoreo-jsrunner-commons",
-                   :version => "1.10.7-beta60"
+                   :version => "1.10.7-beta63"
                },
                {
                    :name => "js-yaml",
@@ -243,7 +243,7 @@ function setTextRollup() {
         }
     });
 
-    textRollup += 'Total Number of Violating Cloud Objects: ' + numberOfViolations + "\\n";
+    textRollup += 'Total Number of matching Cloud Objects: ' + numberOfViolations + "\\n";
     textRollup += 'Rollup' + "\\n";
     textRollup += emailText;
 
