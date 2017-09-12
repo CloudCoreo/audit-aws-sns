@@ -292,8 +292,8 @@ coreo_aws_s3_policy "cloudcoreo-audit-aws-sns-policy" do
 ,
 "Action": "s3:*",
 "Resource": [
-"arn:aws:s3:::${AUDIT_AWS_SNS_S3_NOTIFICATION_BUCKET_NAME}/*",
-"arn:aws:s3:::${AUDIT_AWS_SNS_S3_NOTIFICATION_BUCKET_NAME}"
+"arn:aws:s3:::bucket-${AUDIT_AWS_SNS_S3_NOTIFICATION_BUCKET_NAME}/*",
+"arn:aws:s3:::bucket-${AUDIT_AWS_SNS_S3_NOTIFICATION_BUCKET_NAME}"
 ]
 }
 ]
