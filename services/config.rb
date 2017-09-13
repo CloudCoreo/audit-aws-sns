@@ -313,7 +313,7 @@ coreo_uni_util_notify "cloudcoreo-audit-aws-sns-s3" do
   payload 'COMPOSITE::coreo_uni_util_jsrunner.tags-to-notifiers-array-sns.report'
   endpoint ({
       object_name: 'aws-sns-json',
-      bucket_name: '${AUDIT_AWS_SNS_S3_NOTIFICATION_BUCKET_NAME}',
+      bucket_name: 'bucket-${AUDIT_AWS_SNS_S3_NOTIFICATION_BUCKET_NAME}',
       folder: 'sns/PLAN::name',
       properties: {}
   })
