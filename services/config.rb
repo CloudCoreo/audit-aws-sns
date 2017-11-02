@@ -42,10 +42,11 @@ coreo_aws_rule "sns-subscriptions-inventory" do
   category "Inventory"
   suggested_action "None."
   level "Informational"
-  objectives ["subscriptions"]
-  audit_objects ["object.subscriptions.subscription_arn"]
-  operators ["=~"]
-  raise_when [//]
+  objectives ["list_topics", "list_subscriptions_by_topic"]
+  call_modifiers ["", {:topic_arn => "object.topics.topic_arn"}]
+  audit_objects ["", "object.subscriptions.subscription_arn"]
+  operators ["", "=~"]
+  raise_when ["", //]
   id_map "object.subscriptions.subscription_arn"
 end
 
@@ -59,10 +60,11 @@ coreo_aws_rule "sns-subscriptions-inventory-internal" do
   category "Internal"
   suggested_action "Ignore"
   level "Internal"
-  objectives ["subscriptions"]
-  audit_objects ["object.subscriptions.subscription_arn"]
-  operators ["=~"]
-  raise_when [//]
+  objectives ["list_topics", "list_subscriptions_by_topic"]
+  call_modifiers ["", {:topic_arn => "object.topics.topic_arn"}]
+  audit_objects ["", "object.subscriptions.subscription_arn"]
+  operators ["", "=~"]
+  raise_when ["", //]
   id_map "object.subscriptions.subscription_arn"
 end
 
